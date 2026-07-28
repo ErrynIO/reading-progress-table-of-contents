@@ -1,0 +1,17 @@
+{
+	"apiVersion": 3,
+	"name": "rptoc/toc-progress",
+	"title": "TOC & Progress",
+	"category": "widgets",
+	"icon": "list-view",
+	"description": "Adds the combined table of contents and reading progress bar. Fixed to the bottom of the viewport regardless of where this block sits on the page; headings are pulled automatically from this page's H2/H3s.",
+	"keywords": [ "toc", "table of contents", "progress bar", "reading progress" ],
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"textdomain": "reading-progress-table-of-contents",
+	"version": "1.0.0",
+	"editorScript": "file:./editor.js"
+}

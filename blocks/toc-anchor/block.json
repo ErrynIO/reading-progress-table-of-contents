@@ -1,0 +1,22 @@
+{
+	"apiVersion": 3,
+	"name": "rptoc/toc-anchor",
+	"title": "TOC Anchor",
+	"category": "widgets",
+	"icon": "admin-links",
+	"description": "Marks a point on this page to appear in the TOC & Progress bar. When any TOC Anchor blocks exist on a page, they replace automatic H2/H3 detection entirely for that page.",
+	"keywords": [ "toc", "anchor", "table of contents", "jump link" ],
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"multiple": true
+	},
+	"textdomain": "reading-progress-table-of-contents",
+	"version": "1.0.0",
+	"editorScript": "file:./editor.js"
+}

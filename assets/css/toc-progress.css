@@ -1,0 +1,578 @@
+/*
+ * ====================================================================
+ *  MARF AND THE MILDLY INCONVENIENT APOCALYPSE
+ *  Part ix of xi
+ * ====================================================================
+ *  The villagers gathered around Marf, cheering. The innkeeper
+ *  pushed through the crowd. "You saved us! Name your reward."
+ *
+ *  Marf considered gold, armour, and perhaps a horse. His stomach
+ *  growled.
+ *
+ *    "Breakfast."
+ *
+ *  The innkeeper nodded solemnly. "Anything you like."
+ *
+ *  -> continues in assets/css/admin.css
+ * ====================================================================
+ */
+
+.rptoc {
+	position: fixed;
+	left: 0;
+	right: 0;
+	width: 100%;
+	max-width: 100vw;
+	box-sizing: border-box;
+	overflow: hidden;
+	z-index: 9990;
+	display: flex;
+	flex-direction: column;
+	background: var( --rptoc-bg, #14151a );
+	color: var( --rptoc-fg, #f2f2f2 );
+	font-family: var( --rptoc-font, inherit );
+}
+
+/* Dock: bottom of viewport (default). */
+.rptoc--dock-bottom {
+	bottom: 0;
+	top: auto;
+}
+
+.rptoc--shadow.rptoc--dock-bottom {
+	box-shadow: 0 -2px 12px color-mix( in srgb, currentColor 22%, transparent );
+}
+
+/* Phones and tablets reserve the very bottom strip of the screen for the
+   system gesture bar. A control docked flush to bottom: 0 lands inside it,
+   which makes the links awkward to tap and, worse, lets the OS swallow the
+   sideways swipe that scrolls them. On touch devices the docked bar is
+   lifted above that strip: by the safe-area inset where the theme opts
+   into it, and by a small floor everywhere else. The background still
+   reaches the bottom edge, so it reads as docked; only the links move up. */
+@media ( pointer: coarse ) {
+	.rptoc--dock-bottom {
+		padding-bottom: max( 14px, env( safe-area-inset-bottom, 0px ) );
+	}
+}
+
+/* Dock: directly below the header. --rptoc-header-h is kept live by a
+   ResizeObserver in JS, not by anything scroll-driven. */
+.rptoc--dock-header {
+	top: var( --rptoc-header-h, 0px );
+	bottom: auto;
+}
+
+.rptoc--shadow.rptoc--dock-header {
+	box-shadow: 0 2px 12px color-mix( in srgb, currentColor 22%, transparent );
+}
+
+.rptoc-anchor-point {
+	display: block;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+.rptoc__progress {
+	position: relative;
+	height: 3px;
+	width: 100%;
+	flex: 0 0 auto;
+	background: color-mix( in srgb, currentColor 15%, transparent );
+	overflow: hidden;
+}
+
+.rptoc__progress-fill {
+	display: block;
+	height: 100%;
+	width: 100%;
+	background: var( --rptoc-accent, #4fd1ff );
+	transform: scaleX( 0 );
+	/* transform-origin accepts no logical keywords, so RTL needs an
+	   explicit flip below. Without it the bar fills from the wrong
+	   edge on Arabic and Hebrew sites. */
+	transform-origin: left center;
+	will-change: transform;
+}
+
+[dir="rtl"] .rptoc__progress-fill,
+.rptoc[dir="rtl"] .rptoc__progress-fill {
+	transform-origin: right center;
+}
+
+.rptoc__track {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	/* Declare the gesture. Without this, a mobile browser will not always
+	   accept a sideways drag on a horizontal scroller that sits inside a
+	   fixed bar, and the links become impossible to swipe. pan-x claims the
+	   horizontal drag for the track; overscroll containment stops that drag
+	   from spilling into a browser back-swipe. */
+	touch-action: pan-x;
+	overscroll-behavior-x: contain;
+	padding: 8px 24px;
+	box-sizing: border-box;
+	width: 100%;
+	justify-content: flex-start;
+	font-size: var( --rptoc-font-size, inherit );
+
+	/* Scrollbar hidden; the fade mask below signals scrollability instead. */
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+
+	mask-image: linear-gradient( to right, transparent 0, black 24px, black calc( 100% - 24px ), transparent 100% );
+	-webkit-mask-image: linear-gradient( to right, transparent 0, black 24px, black calc( 100% - 24px ), transparent 100% );
+}
+
+.rptoc__track::-webkit-scrollbar {
+	display: none;
+}
+
+/* Alignment only matters when the list is narrower than the track; once it
+   overflows, "safe center"/"safe flex-end" fall back to start-alignment so
+   scrolling to the first pill never gets clipped. */
+.rptoc--align-center .rptoc__track {
+	justify-content: center;
+	justify-content: safe center;
+}
+
+.rptoc--align-right .rptoc__track {
+	justify-content: flex-end;
+	justify-content: safe flex-end;
+}
+
+/* Depth is a modifier on one element rather than three named element
+   types, because heading levels are selectable from H2 to H6 and the
+   markup is now rendered recursively. Depth beyond 4 keeps rendering,
+   it just stops indenting; a horizontal strip runs out of room for
+   nesting long before six levels of it. */
+.rptoc__list {
+	list-style: none;
+	display: inline-flex;
+	flex: 0 0 auto;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+
+.rptoc__item {
+	display: inline-flex;
+	align-items: center;
+}
+
+.rptoc__list:not( .rptoc__list--depth-1 ) {
+	margin-inline-start: 6px;
+	padding-inline-start: 6px;
+	/* currentColor, not a fixed white: the divider has to read on a
+	   light background as well as a dark one, and the bar's own text
+	   colour is the only thing guaranteed to contrast with the bar's
+	   own background. Same reasoning throughout this file. */
+	border-inline-start: 1px solid color-mix( in srgb, currentColor 20%, transparent );
+}
+
+.rptoc__pill {
+	display: inline-block;
+	padding: var( --rptoc-pad-y, 6px ) var( --rptoc-pad-x, 12px );
+	border-radius: 999px;
+	background: color-mix( in srgb, currentColor 8%, transparent );
+	color: inherit;
+	text-decoration: none;
+	line-height: 1.2;
+	white-space: nowrap;
+	transition: background-color .15s ease, color .15s ease;
+}
+
+.rptoc__pill--depth-2 {
+	font-size: 0.92em;
+	opacity: .85;
+	padding: 0.4em 0.8em;
+}
+
+.rptoc__pill--depth-3 {
+	font-size: 0.85em;
+	opacity: .7;
+	padding: 0.35em 0.7em;
+}
+
+.rptoc__pill--depth-4 {
+	font-size: 0.8em;
+	opacity: .6;
+	padding: 0.3em 0.65em;
+}
+
+.rptoc__pill:hover,
+.rptoc__pill:focus-visible {
+	background: color-mix( in srgb, currentColor 18%, transparent );
+}
+
+.rptoc__pill.is-active {
+	background: var( --rptoc-accent, #4fd1ff );
+	color: var( --rptoc-accent-contrast, #0b0b0d );
+	opacity: 1;
+}
+
+/* Style: plain text links, set on the settings page (site-wide). */
+.rptoc--text .rptoc__pill {
+	background: none;
+	padding: 4px 2px;
+	border-radius: 0;
+}
+
+.rptoc--text .rptoc__pill:hover,
+.rptoc--text .rptoc__pill:focus-visible {
+	background: none;
+	text-decoration: underline;
+}
+
+.rptoc--text .rptoc__pill.is-active {
+	background: none;
+	color: var( --rptoc-accent, #4fd1ff );
+	text-decoration: underline;
+}
+
+.rptoc--text .rptoc__item:not( :last-child )::after {
+	content: "\00b7";
+	margin-inline: 4px 6px;
+	color: color-mix( in srgb, currentColor 45%, transparent );
+	display: inline-flex;
+	align-items: center;
+}
+
+.rptoc--text .rptoc__list:not( .rptoc__list--depth-1 ) {
+	border-inline-start-color: color-mix( in srgb, currentColor 14%, transparent );
+}
+
+/* ======================================================== Rail layout ===
+   The Medium-style edge minimap: a disclosure button of ticks that opens
+   a popover holding the same list. Every rule here is scoped under
+   .rptoc--rail, so the bar layout cannot regress. Below the mobile
+   breakpoint these are unwound and the rail becomes the bar again, which
+   is why the markup is shared rather than a second render. */
+
+.rptoc--rail {
+	/* Small and edge-pinned, vertically centred, rather than a full-width
+	   strip. overflow must escape so the popover can leave the toggle's
+	   box, and the nav's own background falls away because in the rail the
+	   ticks sit over the page, not over a bar. */
+	left: auto;
+	right: 16px;
+	width: auto;
+	max-width: none;
+	top: 50%;
+	bottom: auto;
+	transform: translateY( -50% );
+	height: auto;
+	flex-direction: row;
+	align-items: center;
+	background: transparent;
+	box-shadow: none;
+	overflow: visible;
+}
+
+.rptoc--rail-left {
+	left: 16px;
+	right: auto;
+}
+
+/* Dock is a bar concept. In the desktop rail it must not re-assert a
+   top or bottom that fights the vertical centring; it comes back in the
+   mobile fallback. */
+.rptoc--rail.rptoc--dock-bottom,
+.rptoc--rail.rptoc--dock-header {
+	box-shadow: none;
+}
+
+.rptoc--rail .rptoc__progress {
+	display: none;
+}
+
+/* The toggle carries the ticks. A real button, so it is keyboard- and
+   screen-reader-reachable out of the box. */
+.rptoc--rail .rptoc__rail-toggle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 10px 6px;
+	margin: 0;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	appearance: none;
+	transition: background-color .15s ease;
+}
+
+.rptoc--rail .rptoc__rail-toggle:hover {
+	background: color-mix( in srgb, currentColor 8%, transparent );
+}
+
+.rptoc--rail .rptoc__rail-toggle:focus-visible {
+	outline: 2px solid var( --rptoc-accent, #4fd1ff );
+	outline-offset: 2px;
+}
+
+.rptoc__ticks {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	align-items: flex-end;
+}
+
+.rptoc--rail-left .rptoc__ticks {
+	align-items: flex-start;
+}
+
+/* Ticks read as document shape: longer for shallower headings. They use
+   the accent, not the text colour, because the accent is the one role
+   guaranteed to carry over the page background in both auto mode (where
+   it is the theme's link colour) and a custom brand colour. */
+.rptoc__tick {
+	display: block;
+	width: 10px;
+	height: 2px;
+	border-radius: 2px;
+	background: color-mix( in srgb, var( --rptoc-accent, #4fd1ff ) 38%, transparent );
+	transition: width .15s ease, background-color .15s ease;
+}
+
+.rptoc__tick--l2 { width: 16px; }
+.rptoc__tick--l3 { width: 12px; }
+.rptoc__tick--l4 { width: 9px; }
+.rptoc__tick--l5 { width: 7px; }
+.rptoc__tick--l6 { width: 6px; }
+
+.rptoc__tick.is-active {
+	width: 20px;
+	background: var( --rptoc-accent, #4fd1ff );
+}
+
+/* Popover: absolutely positioned beside the toggle, on the inner side, so
+   the nav does not grow when it opens. Hidden until the rail is open,
+   hovered, or holds focus. */
+.rptoc--rail .rptoc__panel {
+	position: absolute;
+	top: 50%;
+	right: 100%;
+	transform: translateY( -50% ) translateX( -8px );
+	margin-inline-end: 8px;
+	min-width: 220px;
+	max-width: min( 320px, 70vw );
+	max-height: 70vh;
+	overflow-y: auto;
+	background: var( --rptoc-bg, #14151a );
+	color: var( --rptoc-fg, #f2f2f2 );
+	border-radius: 10px;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+
+.rptoc--shadow.rptoc--rail .rptoc__panel {
+	box-shadow: 0 6px 24px color-mix( in srgb, currentColor 30%, transparent );
+}
+
+.rptoc--rail-left .rptoc__panel {
+	right: auto;
+	left: 100%;
+	transform: translateY( -50% ) translateX( 8px );
+	margin-inline-end: 0;
+	margin-inline-start: 8px;
+}
+
+.rptoc--rail.is-open .rptoc__panel,
+.rptoc--rail:hover .rptoc__panel,
+.rptoc--rail:focus-within .rptoc__panel {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: translateY( -50% ) translateX( 0 );
+}
+
+/* The shared list turns vertical inside the popover: a stacked column
+   rather than a horizontal scroller, and nesting indents rather than
+   drawing the horizontal divider the bar uses. */
+.rptoc--rail .rptoc__track {
+	display: block;
+	width: auto;
+	overflow: visible;
+	padding: 8px;
+	mask-image: none;
+	-webkit-mask-image: none;
+}
+
+.rptoc--rail .rptoc__list {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 2px;
+}
+
+.rptoc--rail .rptoc__list:not( .rptoc__list--depth-1 ) {
+	flex-direction: column;
+	margin-inline-start: 12px;
+	padding-inline-start: 0;
+	border-inline-start: 0;
+}
+
+.rptoc--rail .rptoc__item {
+	display: block;
+}
+
+.rptoc--rail .rptoc__pill {
+	display: block;
+	white-space: normal;
+	border-radius: 6px;
+}
+
+.rptoc--rail.rptoc--text .rptoc__pill {
+	padding: 6px 8px;
+}
+
+/* The separator dot only makes sense in the horizontal bar. */
+.rptoc--rail.rptoc--text .rptoc__item::after {
+	content: none;
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	.rptoc--rail .rptoc__panel,
+	.rptoc__tick,
+	.rptoc--rail .rptoc__rail-toggle {
+		transition: none;
+	}
+}
+
+@media ( max-width: 689px ) {
+	.rptoc__track {
+		padding: 6px 16px;
+		font-size: var( --rptoc-font-size-mobile, var( --rptoc-font-size, inherit ) );
+	}
+
+	.rptoc__pill {
+		padding: var( --rptoc-pad-y-mobile, var( --rptoc-pad-y, 8px ) ) var( --rptoc-pad-x-mobile, var( --rptoc-pad-x, 14px ) );
+	}
+
+	/* Rail falls back to the bar here: no hover to open a popover, and an
+	   edge rail crowds the text on a phone. Everything the desktop rail
+	   overrode is put back so the bar's own rules take over, including
+	   whichever dock position was chosen. */
+	.rptoc--rail {
+		left: 0;
+		right: 0;
+		width: 100%;
+		max-width: 100vw;
+		top: auto;
+		bottom: auto;
+		transform: none;
+		flex-direction: column;
+		background: var( --rptoc-bg, #14151a );
+		overflow: hidden;
+	}
+
+	.rptoc--rail.rptoc--dock-bottom {
+		bottom: 0;
+	}
+
+	.rptoc--shadow.rptoc--rail.rptoc--dock-bottom {
+		box-shadow: 0 -2px 12px color-mix( in srgb, currentColor 22%, transparent );
+	}
+
+	.rptoc--rail.rptoc--dock-header {
+		top: var( --rptoc-header-h, 0px );
+	}
+
+	.rptoc--shadow.rptoc--rail.rptoc--dock-header {
+		box-shadow: 0 2px 12px color-mix( in srgb, currentColor 22%, transparent );
+	}
+
+	.rptoc--rail .rptoc__rail-toggle {
+		display: none;
+	}
+
+	.rptoc--rail .rptoc__progress {
+		display: block;
+	}
+
+	/* Panel stops being a popover and becomes the track wrapper again:
+	   in flow, always visible, no card chrome. */
+	.rptoc--rail .rptoc__panel {
+		position: static;
+		transform: none;
+		margin: 0;
+		min-width: 0;
+		max-width: none;
+		max-height: none;
+		overflow: visible;
+		background: transparent;
+		color: inherit;
+		border-radius: 0;
+		box-shadow: none;
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	.rptoc--rail .rptoc__track {
+		display: flex;
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding: 6px 16px;
+		mask-image: linear-gradient( to right, transparent 0, black 24px, black calc( 100% - 24px ), transparent 100% );
+		-webkit-mask-image: linear-gradient( to right, transparent 0, black 24px, black calc( 100% - 24px ), transparent 100% );
+	}
+
+	.rptoc--rail .rptoc__list {
+		flex-direction: row;
+	}
+
+	.rptoc--rail .rptoc__list:not( .rptoc__list--depth-1 ) {
+		flex-direction: row;
+		margin-inline-start: 6px;
+		padding-inline-start: 6px;
+		border-inline-start: 1px solid color-mix( in srgb, currentColor 20%, transparent );
+	}
+
+	.rptoc--rail .rptoc__item {
+		display: inline-flex;
+	}
+
+	.rptoc--rail .rptoc__pill {
+		white-space: nowrap;
+	}
+
+	/* The desktop popover's open state carries transform: translateY(-50%)
+	   and, being three classes deep, outweighs the static reset above. On a
+	   phone the toggle is hidden but :hover and :focus-within still fire on
+	   tap, so without this the whole strip yanks up half its height when a
+	   link is touched. Same specificity, later in the file, so it wins here
+	   and nowhere else. */
+	.rptoc--rail.is-open .rptoc__panel,
+	.rptoc--rail:hover .rptoc__panel,
+	.rptoc--rail:focus-within .rptoc__panel {
+		transform: none;
+	}
+
+	.rptoc--rail.rptoc--text .rptoc__item:not( :last-child )::after {
+		content: "\00b7";
+	}
+}
+
+.rptoc-editor-placeholder,
+.rptoc-anchor-editor {
+	border: 1px dashed #ccc;
+	padding: 16px;
+	border-radius: 6px;
+	background: #f7f7f7;
+}
+
+.rptoc-anchor-editor__icon {
+	display: inline-block;
+	margin-bottom: 6px;
+	font-size: 18px;
+}

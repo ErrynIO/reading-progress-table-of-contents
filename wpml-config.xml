@@ -1,0 +1,19 @@
+<wpml-config>
+	<!--
+		Read by both WPML and Polylang from the plugin root. The TOC Anchor
+		block stores a visible section title in its "label" attribute, so it
+		is declared translatable here; without this, that text stays in the
+		source language on translated pages. Only fields named here are made
+		translatable, so nothing else in the block is touched.
+
+		The marker block (rptoc/toc-progress) saves no text, and the settings
+		option holds only selectors, numbers and choices, so neither needs an
+		entry. Excluded post IDs are handled in PHP instead, through the
+		wpml_object_id filter, which both plugins provide.
+	-->
+	<gutenberg-blocks>
+		<gutenberg-block type="rptoc/toc-anchor" translate="1">
+			<key name="label" />
+		</gutenberg-block>
+	</gutenberg-blocks>
+</wpml-config>

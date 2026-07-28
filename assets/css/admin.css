@@ -1,0 +1,550 @@
+/*
+ * ====================================================================
+ *  MARF AND THE MILDLY INCONVENIENT APOCALYPSE
+ *  Part x of xi
+ * ====================================================================
+ *  Marf held up the suspicious cheese.
+ *
+ *    "Not this."
+ *
+ *  Erryn lowered himself onto Marf's shoulder.
+ *
+ *    "You realise they'll expect you to keep doing this."
+ *    "Doing what?"
+ *    "Helping people."
+ *
+ *  -> continues in uninstall.php
+ * ====================================================================
+ */
+
+/**
+ * Settings screen.
+ *
+ * Built on wp-admin's own tokens rather than a bespoke palette:
+ * --wp-admin-theme-color follows whichever admin colour scheme the user
+ * picked, so the page reads as part of WordPress rather than a plugin
+ * that brought its own design system. The chrome (masthead, tab shell,
+ * grey pane) borrows the shape of RankMath's screens so it feels familiar
+ * to the audience most likely to install this.
+ */
+
+.rptoc-admin {
+	--rptoc-a-accent: var( --wp-admin-theme-color, #2271b1 );
+	--rptoc-a-border: #dcdcde;
+	--rptoc-a-muted: #646970;
+	--rptoc-a-ink: #1d2327;
+	--rptoc-a-surface: #fff;
+	--rptoc-a-sunken: #f6f7f7;
+	--rptoc-a-radius: 8px;
+	max-width: 920px;
+}
+
+/* --------------------------------------------------------- Masthead */
+
+.rptoc-masthead {
+	background: var( --rptoc-a-surface );
+	border: 1px solid var( --rptoc-a-border );
+	border-radius: var( --rptoc-a-radius );
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+.rptoc-masthead__bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 16px 24px;
+}
+
+.rptoc-masthead__title {
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.25;
+	color: var( --rptoc-a-ink );
+}
+
+.rptoc-masthead__brand {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+}
+
+/* The mark keeps its own fill variable, so its colour travels with the
+   brand rather than being hard-set here. One spin on load, then still. */
+.rptoc-brand-icon {
+	display: block;
+	width: 40px;
+	height: 40px;
+	transform-origin: 50% 50%;
+	animation: rptoc-spin-in .8s cubic-bezier( .2, .7, .2, 1 ) both;
+}
+
+@keyframes rptoc-spin-in {
+	from {
+		transform: rotate( -360deg );
+		opacity: 0;
+	}
+	to {
+		transform: rotate( 0 );
+		opacity: 1;
+	}
+}
+
+.rptoc-masthead__sub {
+	padding: 11px 24px;
+	border-top: 1px solid var( --rptoc-a-border );
+	background: var( --rptoc-a-sunken );
+	color: var( --rptoc-a-muted );
+	font-size: 13px;
+}
+
+/* ------------------------------------------------------------ Shell */
+
+/* The tabs and their panels live in one bordered container, so the
+   active tab can share the pane's background and read as one connected
+   surface rather than a strip floating above separate cards. */
+.rptoc-shell {
+	margin-top: 16px;
+	border: 1px solid var( --rptoc-a-border );
+	border-radius: var( --rptoc-a-radius );
+	overflow: hidden;
+	background: var( --rptoc-a-surface );
+}
+
+.rptoc-tabs {
+	flex-wrap: wrap;
+	gap: 4px;
+	margin: 0;
+	padding: 8px 12px 0;
+	background: var( --rptoc-a-surface );
+	border-bottom: 1px solid var( --rptoc-a-border );
+}
+
+.rptoc-tabs__tab {
+	appearance: none;
+	background: transparent;
+	border: 1px solid transparent;
+	border-bottom: 0;
+	border-radius: 6px 6px 0 0;
+	padding: 10px 16px;
+	margin-bottom: -1px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var( --rptoc-a-muted );
+	cursor: pointer;
+	transition: color .12s ease, background-color .12s ease;
+}
+
+.rptoc-tabs__tab:hover {
+	color: var( --rptoc-a-accent );
+	background: color-mix( in srgb, var( --rptoc-a-accent ) 6%, transparent );
+}
+
+.rptoc-tabs__tab:focus-visible {
+	outline: 2px solid var( --rptoc-a-accent );
+	outline-offset: -2px;
+}
+
+/* Active tab takes the pane's own colour and paints its lower border in
+   that same colour, so the seam between tab and pane disappears. */
+.rptoc-tabs__tab.is-active {
+	background: var( --rptoc-a-sunken );
+	border-color: var( --rptoc-a-border );
+	border-bottom-color: var( --rptoc-a-sunken );
+	color: var( --rptoc-a-ink );
+}
+
+.rptoc-shell__body {
+	background: var( --rptoc-a-sunken );
+	padding: 4px 20px 20px;
+}
+
+.rptoc-shell__actions {
+	padding: 14px 20px;
+	border-top: 1px solid var( --rptoc-a-border );
+	background: var( --rptoc-a-surface );
+}
+
+.rptoc-shell__actions .button {
+	margin: 0;
+}
+
+/* ----------------------------------------------------------- Footer */
+
+.rptoc-admin__footer {
+	margin: 14px 2px 0;
+	color: var( --rptoc-a-muted );
+	font-size: 12px;
+}
+
+.rptoc-admin__footer a {
+	color: var( --rptoc-a-accent );
+	text-decoration: none;
+}
+
+.rptoc-admin__footer a:hover {
+	text-decoration: underline;
+}
+
+/* Version sits inline with the credit at the same size, muted, for quick
+   reference. The number itself is injected from RPTOC_VERSION so it can
+   never drift from the plugin header. */
+.rptoc-admin__version {
+	color: var( --rptoc-a-muted );
+}
+
+/* Advanced detection: a native disclosure, collapsed by default, so it
+   needs no script to open and stays out of the way until wanted. */
+.rptoc-advanced {
+	margin-top: 16px;
+	border-top: 1px solid #f0f0f1;
+	padding-top: 4px;
+}
+
+.rptoc-advanced__summary {
+	cursor: pointer;
+	padding: 12px 0 4px;
+	font-weight: 600;
+	color: var( --rptoc-a-ink );
+	list-style-position: inside;
+}
+
+.rptoc-advanced__summary:focus-visible {
+	outline: 2px solid var( --rptoc-a-accent );
+	outline-offset: 2px;
+}
+
+/* A whole card can be conditional too, not just a field: the pill-padding
+   card hides wholesale when plain-text links are chosen. Its inputs stay
+   in the DOM so their saved values ride along untouched. */
+.rptoc-card--dependent[hidden] {
+	display: none;
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	.rptoc-brand-icon {
+		animation: none;
+	}
+}
+
+/* -------------------------------------------------------------- Panels */
+
+/* Panels are all visible until the script says otherwise. Without JS the
+   tabs cannot switch, so hiding three quarters of the settings behind
+   buttons that do nothing would lock people out of them. */
+.rptoc-tabs {
+	display: none;
+}
+
+.rptoc-admin.is-enhanced .rptoc-tabs {
+	display: flex;
+}
+
+.rptoc-admin.is-enhanced .rptoc-panel {
+	display: none;
+}
+
+.rptoc-admin.is-enhanced .rptoc-panel.is-active {
+	display: block;
+}
+
+/* --------------------------------------------------------------- Cards */
+
+/* White cards on the grey pane: the figure-ground that makes each block
+   read as its own designated section. */
+.rptoc-card {
+	background: var( --rptoc-a-surface );
+	border: 1px solid var( --rptoc-a-border );
+	border-radius: var( --rptoc-a-radius );
+	box-shadow: 0 1px 2px rgba( 0, 0, 0, .04 );
+	padding: 4px 24px 20px;
+	margin-top: 16px;
+}
+
+.rptoc-panel > .rptoc-card:first-of-type {
+	margin-top: 16px;
+}
+
+.rptoc-card h2 {
+	font-size: 15px;
+	font-weight: 600;
+	padding: 16px 0 0;
+	margin: 0 0 4px;
+}
+
+.rptoc-card h3 {
+	font-size: 13px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	color: var( --rptoc-a-muted );
+	margin: 0 0 10px;
+}
+
+.rptoc-card__lede {
+	max-width: 68ch;
+	margin-bottom: 18px !important;
+}
+
+/* -------------------------------------------------------------- Fields */
+
+.rptoc-field {
+	padding: 16px 0;
+	border-top: 1px solid #f0f0f1;
+}
+
+.rptoc-field:first-of-type {
+	border-top: 0;
+}
+
+.rptoc-field__label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.rptoc-field .description {
+	max-width: 68ch;
+	margin-top: 8px;
+}
+
+/* Dependent fields: shown only when their controlling option is on.
+   Hidden with [hidden] from JS so the markup stays honest. */
+.rptoc-field--dependent {
+	border-top: 0;
+	padding-top: 0;
+	margin-inline-start: 4px;
+	padding-inline-start: 16px;
+	border-inline-start: 3px solid #f0f0f1;
+}
+
+.rptoc-field--dependent[hidden] {
+	display: none;
+}
+
+/* ---------------------------------------------------- Checks and chips */
+
+.rptoc-checks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 20px;
+}
+
+.rptoc-checks--inline {
+	gap: 8px;
+}
+
+.rptoc-check {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	line-height: 1.4;
+}
+
+.rptoc-check input {
+	margin: 0;
+}
+
+/* Heading levels read better as chips than as a row of loose boxes. */
+.rptoc-check--chip {
+	border: 1px solid var( --rptoc-a-border );
+	border-radius: 999px;
+	padding: 6px 14px;
+	font-weight: 600;
+	font-size: 13px;
+	background: var( --rptoc-a-sunken );
+	transition: border-color .12s ease, background-color .12s ease;
+}
+
+.rptoc-check--chip:has( input:checked ) {
+	border-color: var( --rptoc-a-accent );
+	background: color-mix( in srgb, var( --rptoc-a-accent ) 8%, #fff );
+}
+
+.rptoc-check--chip:has( input:focus-visible ) {
+	outline: 2px solid var( --rptoc-a-accent );
+	outline-offset: 2px;
+}
+
+.rptoc-segmented {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 22px;
+}
+
+/* ------------------------------------------------------------ Sliders */
+
+.rptoc-slider {
+	display: grid;
+	grid-template-columns: 150px minmax( 120px, 1fr ) auto;
+	align-items: center;
+	gap: 14px;
+	padding: 6px 0;
+	max-width: 620px;
+}
+
+.rptoc-slider__label {
+	font-weight: 500;
+}
+
+.rptoc-slider__value {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	white-space: nowrap;
+}
+
+.rptoc-slider__unit {
+	color: var( --rptoc-a-muted );
+	font-size: 12px;
+}
+
+.rptoc-slider__range {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 4px;
+	border-radius: 999px;
+	background: var( --rptoc-a-border );
+	cursor: pointer;
+}
+
+.rptoc-slider__range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: var( --rptoc-a-accent );
+	border: 2px solid #fff;
+	box-shadow: 0 0 0 1px var( --rptoc-a-border );
+	cursor: grab;
+}
+
+.rptoc-slider__range::-moz-range-thumb {
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: var( --rptoc-a-accent );
+	border: 2px solid #fff;
+	box-shadow: 0 0 0 1px var( --rptoc-a-border );
+	cursor: grab;
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	.rptoc-tabs__tab,
+	.rptoc-check--chip {
+		transition: none;
+	}
+}
+
+/* ------------------------------------------------------------- Colours */
+
+/* Mode-gated visibility. The container carries data-mode; roles hide
+   under follow, and each role shows its palette dropdown under palette
+   and its colour picker under custom. Both inputs stay in the DOM the
+   whole time, so switching modes never discards the other's value. */
+.rptoc-colors[data-mode="follow"] .rptoc-color-roles {
+	display: none;
+}
+
+.rptoc-colors__note {
+	display: none;
+}
+
+.rptoc-colors[data-mode="follow"] .rptoc-colors__note[data-rptoc-mode-note="follow"],
+.rptoc-colors[data-mode="palette"] .rptoc-colors__note[data-rptoc-mode-note="palette"],
+.rptoc-colors[data-mode="custom"] .rptoc-colors__note[data-rptoc-mode-note="custom"] {
+	display: block;
+}
+
+.rptoc-colors[data-mode="palette"] .rptoc-color__custom,
+.rptoc-colors[data-mode="custom"] .rptoc-color__palette {
+	display: none;
+}
+
+.rptoc-color {
+	display: grid;
+	grid-template-columns: 200px 1fr auto;
+	align-items: center;
+	gap: 12px 16px;
+	padding: 12px 0;
+	border-top: 1px solid #f0f0f1;
+}
+
+.rptoc-color:first-of-type {
+	border-top: 0;
+}
+
+.rptoc-color__label strong {
+	display: block;
+	font-size: 13px;
+}
+
+.rptoc-color__hint {
+	display: block;
+	color: var( --rptoc-a-muted );
+	font-size: 12px;
+}
+
+.rptoc-color__palette select {
+	width: 100%;
+	max-width: 260px;
+}
+
+.rptoc-color__opacity {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.rptoc-color__opacity .rptoc-slider__range {
+	width: 90px;
+}
+
+.rptoc-color__opacity-label {
+	color: var( --rptoc-a-muted );
+	font-size: 12px;
+}
+
+/* Contrast note: restrained, advisory, spans the row. Never a blocker,
+   so it reads as a quiet caution rather than an error. */
+.rptoc-color__contrast {
+	grid-column: 1 / -1;
+	margin: 0;
+	font-size: 12px;
+	color: #8a6d00;
+}
+
+.rptoc-color__contrast[hidden] {
+	display: none;
+}
+
+@media ( max-width: 782px ) {
+	.rptoc-slider,
+	.rptoc-color {
+		grid-template-columns: 1fr;
+		align-items: start;
+	}
+
+	.rptoc-color__palette select {
+		max-width: none;
+	}
+}
+
+/* ------------------------------------------------------------- Columns */
+
+.rptoc-columns {
+	display: grid;
+	grid-template-columns: repeat( auto-fit, minmax( 300px, 1fr ) );
+	gap: 8px 32px;
+	padding-top: 12px;
+}
+
+.rptoc-columns .rptoc-slider {
+	grid-template-columns: 90px minmax( 80px, 1fr ) auto;
+}
