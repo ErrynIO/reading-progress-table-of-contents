@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *    The chief turned. "What?"
  *    "I believe that cart belongs to someone else."
  *
- *  -> continues in assets/js/toc-progress.js
+ *  -> continues in blocks/toc-progress/editor.js
  * ====================================================================
  */
 

@@ -19,7 +19,7 @@
  *    New Skill: Accidental Authority. When you appear confident,
  *    weaker enemies may assume you understand the situation.
  *
- *  -> continues in assets/css/toc-progress.css
+ *  -> continues in blocks/toc-anchor/editor.js
  * ====================================================================
  */
 

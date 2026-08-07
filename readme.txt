@@ -4,7 +4,7 @@ Tags: reading progress, table of contents, toc, progress bar, navigation
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -220,6 +220,10 @@ The optional ItemList markup provides a machine-readable description of the page
 
 == Changelog ==
 
+= 1.0.3 =
+
+* The frontend stylesheet and script are now minified for production, roughly a third of their previous size after compression.
+
 = 1.0.2 =
 
 * Fixed the Plugin URI pointing to a page that does not exist.
@@ -243,6 +247,10 @@ The optional ItemList markup provides a machine-readable description of the page
 * WPML, Polylang and right-to-left support.
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+
+Frontend assets are now minified for production.
 
 = 1.0.2 =
 

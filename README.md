@@ -19,6 +19,7 @@ A performance-conscious WordPress plugin that adds an automatic table of content
 - Optional ItemList structured data
 - Rank Math table-of-contents recognition
 - WPML, Polylang and right-to-left support
+- Minified frontend script and stylesheet, full source shipped alongside
 - No jQuery, external API requests or visitor tracking
 
 ## Installation
@@ -54,6 +55,14 @@ You can also:
 - provide a custom content-area selector for unusual themes.
 
 Full documentation, screenshots and a live demonstration are available on the [product page](https://erryn.io/products/reading-progress-table-of-contents/).
+
+## Contributing to the frontend assets
+
+`assets/js/toc-progress.js` and `assets/css/toc-progress.css` are the source: readable, commented, the files to actually edit. Each has a `.min` counterpart alongside it, which is what a live site loads by default; the plugin switches back to the full source automatically when `SCRIPT_DEBUG` is `true`, the same convention WordPress core itself uses.
+
+There's no build step to develop against: no watcher, no bundler, edit the source files directly. The `.min` files are regenerated only when preparing a release, with [Terser](https://github.com/terser/terser) for the script and [clean-css](https://github.com/clean-css/clean-css) for the stylesheet, and are committed alongside the source so the repository always reflects exactly what a given tagged version ships.
+
+`assets/js/admin.js`, `assets/css/admin.css` and both block `editor.js` files only ever load in `wp-admin`, so they're left unminified.
 
 ## Development and support
 

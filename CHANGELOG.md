@@ -2,6 +2,13 @@
 
 All notable changes to Erryn Reading Progress & Table of Contents will be documented in this file.
 
+## 1.0.3 — 2026-08-07
+
+### Changed
+
+- The frontend script and stylesheet are now minified for production; the plugin loads the full source instead when `SCRIPT_DEBUG` is enabled
+- Moved two comment-only asides out of the frontend files and into files that only ever load in `wp-admin`, so they no longer add to the weight of every page load
+
 ## 1.0.2 — 2026-08-07
 
 ### Fixed

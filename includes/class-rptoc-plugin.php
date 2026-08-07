@@ -257,8 +257,16 @@ class RPTOC_Plugin {
 			return;
 		}
 
-		wp_enqueue_style( 'rptoc', RPTOC_URL . 'assets/css/toc-progress.css', array(), RPTOC_VERSION );
-		wp_enqueue_script( 'rptoc', RPTOC_URL . 'assets/js/toc-progress.js', array(), RPTOC_VERSION, true );
+		// The standard WordPress convention: everyone downloading this
+		// plugin, and every contributor reading it on GitHub, sees the
+		// full commented source, exactly as written. Only the copy served
+		// to actual site visitors is the stripped, minified one, unless
+		// SCRIPT_DEBUG is on, in which case a developer debugging the
+		// frontend gets the same readable file back.
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+		wp_enqueue_style( 'rptoc', RPTOC_URL . "assets/css/toc-progress{$suffix}.css", array(), RPTOC_VERSION );
+		wp_enqueue_script( 'rptoc', RPTOC_URL . "assets/js/toc-progress{$suffix}.js", array(), RPTOC_VERSION, true );
 
 		$settings = RPTOC_Settings::get();
 

@@ -1,3 +1,27 @@
+/*
+ * ====================================================================
+ *  MARF AND THE MILDLY INCONVENIENT APOCALYPSE
+ *  Part vii of xi
+ * ====================================================================
+ *  The goblin stared at him. Then he laughed. The other goblins
+ *  laughed.
+ *
+ *    Erryn floated beside Marf. "You have successfully lowered their
+ *    guard."
+ *    "That was the plan."
+ *    "It clearly was not."
+ *
+ *  The goblin chief swung his axe. Marf ducked. The blade struck the
+ *  cart, split the axle and sent the chief tumbling backwards into
+ *  the village fountain, where his armour wedged firmly between two
+ *  decorative stone fish. There was a long silence.
+ *
+ *    [ Goblin Chief Immobilised ]
+ *
+ *  -> continues in assets/js/admin.js
+ * ====================================================================
+ */
+
 ( function () {
 	var el            = wp.element.createElement;
 	var useBlockProps = wp.blockEditor.useBlockProps;

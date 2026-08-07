@@ -3,7 +3,7 @@
  * Plugin Name: Erryn Reading Progress & Table of Contents
  * Plugin URI: https://erryn.io/products/reading-progress-table-of-contents/
  * Description: A lightweight progress indicator and navigable table of contents for WordPress.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Erryn Deane
@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * ====================================================================
  */
 
-define( 'RPTOC_VERSION', '1.0.2' );
+define( 'RPTOC_VERSION', '1.0.3' );
 define( 'RPTOC_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RPTOC_URL', plugin_dir_url( __FILE__ ) );
 

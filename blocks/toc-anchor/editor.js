@@ -1,3 +1,22 @@
+/*
+ * ====================================================================
+ *  MARF AND THE MILDLY INCONVENIENT APOCALYPSE
+ *  Part ix of xi
+ * ====================================================================
+ *  The villagers gathered around Marf, cheering. The innkeeper
+ *  pushed through the crowd. "You saved us! Name your reward."
+ *
+ *  Marf considered gold, armour, and perhaps a horse. His stomach
+ *  growled.
+ *
+ *    "Breakfast."
+ *
+ *  The innkeeper nodded solemnly. "Anything you like."
+ *
+ *  -> continues in assets/css/admin.css
+ * ====================================================================
+ */
+
 ( function () {
 	var el            = wp.element.createElement;
 	var useBlockProps = wp.blockEditor.useBlockProps;
