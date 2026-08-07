@@ -11,7 +11,7 @@
 		"multiple": false,
 		"reusable": false
 	},
-	"textdomain": "reading-progress-table-of-contents",
-	"version": "1.0.0",
+	"textdomain": "erryn-reading-progress-table-of-contents",
+	"version": "1.0.2",
 	"editorScript": "file:./editor.js"
 }

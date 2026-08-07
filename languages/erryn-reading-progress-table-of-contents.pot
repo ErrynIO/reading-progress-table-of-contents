@@ -1,0 +1,424 @@
+# Copyright (C) 2026 Erryn Deane
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: Erryn Reading Progress & Table of Contents 1.0.2\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-07 06:39+0000\n"
+"X-Domain: erryn-reading-progress-table-of-contents\n"
+
+
+#: blocks/toc-anchor/block.json
+msgid "TOC Anchor"
+msgstr ""
+
+#: blocks/toc-anchor/block.json
+msgid "Marks a point on this page to appear in the TOC & Progress bar. When any TOC Anchor blocks exist on a page, they replace automatic H2/H3 detection entirely for that page."
+msgstr ""
+
+#: blocks/toc-progress/block.json
+msgid "TOC & Progress"
+msgstr ""
+
+#: blocks/toc-progress/block.json
+msgid "Adds the combined table of contents and reading progress bar. Fixed to the bottom of the viewport regardless of where this block sits on the page; headings are pulled automatically from this page's H2/H3s."
+msgstr ""
+
+#: includes/class-rptoc-plugin.php:114
+msgid "Reading Progress & Contents"
+msgstr ""
+
+#: includes/class-rptoc-plugin.php:128
+msgid "On this post:"
+msgstr ""
+
+#: includes/class-rptoc-plugin.php:131
+msgid "Follow the settings"
+msgstr ""
+
+#: includes/class-rptoc-plugin.php:132
+msgid "Always show"
+msgstr ""
+
+#: includes/class-rptoc-plugin.php:133
+msgid "Never show"
+msgstr ""
+
+#: includes/class-rptoc-plugin.php:135
+msgid "Overrides the global rules for this one post. \"Always show\" still needs a heading or two to build the list from."
+msgstr ""
+
+#: includes/class-rptoc-render.php:285 includes/class-rptoc-render.php:311
+msgid "Table of contents"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:394 includes/class-rptoc-settings.php:621
+msgid "Erryn Reading Progress & Table of Contents"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:395
+msgid "Reading Progress"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:582
+msgid "Plugin default"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:594
+msgid "Opacity"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:625
+msgid "A lightweight progress indicator and navigable table of contents for WordPress."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:633
+msgid "General"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:634
+msgid "Placement"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:635
+msgid "Appearance"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:636 includes/class-rptoc-settings.php:924
+msgid "Colours"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:644
+msgid "When it appears"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:649
+msgid "Add it automatically when a page has enough headings"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:651
+msgid "A page using the TOC Anchor block, or the manual block, always renders regardless of this setting."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:655
+msgid "Minimum sections"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:656
+msgid "Below this count, auto-insert leaves the page alone. A three-heading article gets a bar worth having. A two-heading one rarely does."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:660
+msgid "Post types"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:672
+msgid "Never show on these post IDs"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:674
+msgid "Comma separated. On a multilingual site with WPML or Polylang, excluding any one translation excludes the whole group, so a single ID covers every language."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:679
+msgid "What counts as a section"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:682
+msgid "Heading levels"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:691
+msgid "Each level nests under whichever selected level sits above it. H5 and H6 earn their place on a long reference page; on a normal article they mostly make the strip noisy."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:695
+msgid "Skip headings with this class"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:698
+msgid "A single class name, no leading dot. Any heading carrying it is skipped: useful for a themed \"Related posts\" or \"Comments\" heading that would otherwise sit at the end of every table of contents on the site."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:701
+msgid "To add a section that is not a heading at all, use the TOC Anchor block. Placing any anchor block on a page switches that page off heading detection entirely."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:708
+msgid "Add Table of Contents structured data where supported"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:710
+msgid "Uses the detected sections to describe the page structure. No visible markup is added beyond the table of contents itself."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:714
+msgid "Advanced detection"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:717
+msgid "Content area"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:721
+msgid "Detect automatically"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:725
+msgid "CSS selector"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:731
+msgid "Content CSS selector"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:733
+msgid "Enter the selector for the element containing the article content. Use this only when automatic detection does not work correctly with the active theme. If it matches nothing on the page, detection falls back to automatic."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:741
+msgid "Layout"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:744
+msgid "How it shows"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:748
+msgid "Horizontal bar"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:752
+msgid "Side rail"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:755
+msgid "Horizontal bar: a full-width progress bar with the section links displayed alongside it. Side rail: a compact vertical marker fixed to the edge of the viewport that expands to reveal the section list."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:759
+msgid "Rail side"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:763
+msgid "Right"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:767
+msgid "Left"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:770
+msgid "On narrow screens the rail cannot work on touch, so it falls back to the bar automatically. The dock, alignment and progress-bar settings below govern how that fallback looks."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:775
+msgid "Where it sits"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:778
+msgid "Dock position"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:782
+msgid "Bottom of the viewport"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:786
+msgid "Directly below the header"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:792
+msgid "Header selector"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:794
+msgid "Leave blank to detect it automatically: the plugin looks for a header landmark the browser reports as fixed or sticky, rather than guessing at class names. Fill this in only if that picks the wrong element."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:795
+msgid "This mode needs a header that stays on screen. If yours scrolls away with the page, a gap opens above the bar, and the browser console will tell you so."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:799
+msgid "Header offset"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:803
+msgid "Auto"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:807
+msgid "Custom"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:811
+msgid "Custom offset"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:812
+msgid "Set the distance from the top of the viewport for when the site header cannot be detected automatically. Auto measures the detected header and still accounts for the admin bar."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:817
+msgid "Progress bar"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:821
+msgid "Above the links"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:825
+msgid "Below the links"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:831
+msgid "Alignment"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:835
+msgid "Start"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:836
+msgid "Centre"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:837
+msgid "End"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:847
+msgid "Only affects lists short enough to fit. Anything wider scrolls from the start. Start and end follow text direction, so they flip on right-to-left sites."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:854
+msgid "Links and text"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:857
+msgid "Link style"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:861
+msgid "Pills"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:865
+msgid "Plain text"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:871
+msgid "Font size"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:875
+msgid "Inherit from the theme"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:879
+msgid "Set it myself"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:886 includes/class-rptoc-settings.php:905
+msgid "Desktop"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:887 includes/class-rptoc-settings.php:912
+msgid "Mobile"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:889
+msgid "Nested levels scale proportionally from whichever size is active."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:895
+msgid "Drop shadow"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:897
+msgid "Off by default. A drop shadow reads well on a plain light page, but tends to muddy a dark or busy background, so it is left off unless you want it."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:902
+msgid "Pill padding"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:907 includes/class-rptoc-settings.php:914
+msgid "Vertical"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:908 includes/class-rptoc-settings.php:915
+msgid "Horizontal"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:928
+msgid "Colour source"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:932
+msgid "Follow rendered theme colours"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:936
+msgid "Choose palette colours"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:940
+msgid "Use custom colours"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:943
+msgid "Uses the colours rendered by the active theme and follows supported light or dark mode changes automatically."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:944
+msgid "Pin each role to a colour from the active theme's palette. Palette colours are referenced as CSS variables, so they keep following a theme's light or dark switch."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:945
+msgid "Set an exact colour for each role. These are fixed values and do not follow theme mode changes."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:949
+msgid "The active theme ships no theme.json palette, so there are no palette colours to choose. Follow or custom still work."
+msgstr ""
+
+#: includes/class-rptoc-settings.php:954
+msgid "Background"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:954
+msgid "The component background"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:955
+msgid "Text"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:955
+msgid "Inactive links and supporting text"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:956
+msgid "Accent"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:956
+msgid "The progress fill and active link"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:957
+msgid "Accent contrast"
+msgstr ""
+
+#: includes/class-rptoc-settings.php:957
+msgid "Text displayed over the active accent colour"
+msgstr ""
+
+#. translators: %s: erryn.io link.
+#: includes/class-rptoc-settings.php:976
+msgid "Built by %s"
+msgstr ""

@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name: Reading Progress & Table of Contents
+ * Plugin Name: Erryn Reading Progress & Table of Contents
  * Plugin URI: https://erryn.io/products/reading-progress-table-of-contents/
  * Description: A lightweight progress indicator and navigable table of contents for WordPress.
- * Version: 1.0.0
+ * Version: 1.0.2
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Erryn Deane
  * Author URI: https://erryn.io
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: reading-progress-table-of-contents
+ * Text Domain: erryn-reading-progress-table-of-contents
  * Domain Path: /languages
  */
 
@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * ====================================================================
  */
 
-define( 'RPTOC_VERSION', '1.0.0' );
+define( 'RPTOC_VERSION', '1.0.2' );
 define( 'RPTOC_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RPTOC_URL', plugin_dir_url( __FILE__ ) );
 
@@ -104,7 +104,7 @@ add_action( 'update_option_' . RPTOC_Settings::OPTION, 'rptoc_purge_caches' );
 add_filter(
 	'rank_math/researches/toc_plugins',
 	function ( $toc_plugins ) {
-		$toc_plugins[ plugin_basename( __FILE__ ) ] = 'Reading Progress & Table of Contents';
+		$toc_plugins[ plugin_basename( __FILE__ ) ] = 'Erryn Reading Progress & Table of Contents';
 		return $toc_plugins;
 	}
 );

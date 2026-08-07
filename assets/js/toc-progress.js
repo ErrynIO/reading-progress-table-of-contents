@@ -63,6 +63,36 @@
 			document.body.appendChild( nav );
 		}
 
+		// Last line of defence for the same class of problem. Reparenting
+		// handles the usual containing-block trap, but if <body> or <html>
+		// itself carries a transform, filter or contain, a fixed element can
+		// still resolve width: 100% against a box wider than the screen. The
+		// symptom is subtle rather than obvious: the strip quietly sizes to
+		// its links, so nothing overflows, the horizontal scroll has no range
+		// to move through, and the surplus links are clipped out of sight.
+		// Comparing the rendered width against the viewport catches that
+		// whatever caused it, and costs one read on load and on resize.
+		function clampToViewport() {
+			var viewport = document.documentElement.clientWidth || window.innerWidth;
+
+			// Only the full-width layouts should ever span the screen. The
+			// desktop rail is meant to be a small edge element, so it is
+			// left alone.
+			if ( isRail && railActive() ) {
+				nav.style.removeProperty( 'width' );
+				nav.style.removeProperty( 'max-width' );
+				return;
+			}
+
+			if ( nav.getBoundingClientRect().width > viewport + 1 ) {
+				nav.style.width = viewport + 'px';
+				nav.style.maxWidth = viewport + 'px';
+			} else {
+				nav.style.removeProperty( 'width' );
+				nav.style.removeProperty( 'max-width' );
+			}
+		}
+
 		var fill  = nav.querySelector( '[data-rptoc-fill]' );
 		var track = nav.querySelector( '[data-rptoc-track]' );
 
@@ -207,6 +237,7 @@
 			}
 		}
 
+		clampToViewport();
 		measure();
 
 		/* -------------------------------------------------- Theme matching */
@@ -334,7 +365,10 @@
 				if ( resizeTimer ) {
 					clearTimeout( resizeTimer );
 				}
-				resizeTimer = setTimeout( measure, 150 );
+				resizeTimer = setTimeout( function () {
+					clampToViewport();
+					measure();
+				}, 150 );
 			},
 			{ passive: true }
 		);

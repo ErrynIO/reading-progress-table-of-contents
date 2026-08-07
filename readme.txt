@@ -1,10 +1,10 @@
-=== Reading Progress & Table of Contents ===
+=== Erryn Reading Progress & Table of Contents ===
 Contributors: errynio
 Tags: reading progress, table of contents, toc, progress bar, navigation
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Add a fast reading progress bar and automatic table of contents to WordPress pos
 
 == Description ==
 
-Reading Progress & Table of Contents helps readers understand where they are in a long page and move directly to the section they need.
+Erryn Reading Progress & Table of Contents helps readers understand where they are in a long page and move directly to the section they need.
 
 It automatically builds a table of contents from your headings, shows reading progress as the visitor scrolls, and highlights the current section.
 
@@ -34,7 +34,7 @@ By default, the plugin detects headings and displays itself automatically when a
 You can also:
 
 * Add the **TOC & Progress** block to enable it explicitly on a page.
-* Use the `[reading_progress_toc]` or `[rptoc]` shortcode.
+* Use the `[rptoc_reading_progress_toc]` or `[rptoc]` shortcode.
 * Add **TOC Anchor** blocks to define your own sections and labels.
 * Force the component on or off for an individual post.
 * Select which post types and heading levels should be included.
@@ -86,7 +86,7 @@ The plugin also registers as a recognised table of contents for Rank Math's cont
 
 = Privacy =
 
-Reading Progress & Table of Contents does not collect, store or send visitor data.
+Erryn Reading Progress & Table of Contents does not collect, store or send visitor data.
 
 There are no accounts, external API requests or tracking scripts.
 
@@ -122,12 +122,12 @@ There are no accounts, external API requests or tracking scripts.
 
 For screenshots, a live demonstration and further technical details, visit the plugin page:
 
-https://erryn.io/products/reading-progress-table-of-contents/
+https://erryn.io/products/erryn-reading-progress-table-of-contents/
 
 == Installation ==
 
-1. Upload the plugin files to `/wp-content/plugins/reading-progress-table-of-contents/`, or install the plugin through the WordPress Plugins screen.
-2. Activate **Reading Progress & Table of Contents**.
+1. Upload the plugin files to `/wp-content/plugins/erryn-reading-progress-table-of-contents/`, or install the plugin through the WordPress Plugins screen.
+2. Activate **Erryn Reading Progress & Table of Contents**.
 3. Open a post or page containing several headings.
 4. Visit **Settings > Reading Progress** to change the layout, placement or appearance.
 
@@ -155,7 +155,7 @@ Once a page contains one TOC Anchor block, the plugin uses the manual anchors in
 
 = Can I use it outside the block editor? =
 
-Yes. Use the `[reading_progress_toc]` shortcode. The shorter `[rptoc]` version is also available.
+Yes. Use the `[rptoc_reading_progress_toc]` shortcode. The shorter `[rptoc]` version is also available.
 
 It can be used in the Classic Editor and page builders that process standard WordPress shortcodes.
 
@@ -220,6 +220,15 @@ The optional ItemList markup provides a machine-readable description of the page
 
 == Changelog ==
 
+= 1.0.2 =
+
+* Fixed the Plugin URI pointing to a page that does not exist.
+* Renamed the reading_progress_toc shortcode to rptoc_reading_progress_toc for a consistent, unique prefix.
+
+= 1.0.1 =
+
+* Fixed the section links not scrolling sideways on mobile when the side-rail layout falls back to the bar.
+
 = 1.0.0 =
 
 * Initial release.
@@ -234,6 +243,14 @@ The optional ItemList markup provides a machine-readable description of the page
 * WPML, Polylang and right-to-left support.
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+
+Rename of the reading_progress_toc shortcode to rptoc_reading_progress_toc. Update any posts using the old tag.
+
+= 1.0.1 =
+
+Fixes horizontal scrolling of the section links on mobile.
 
 = 1.0.0 =
 

@@ -1,6 +1,22 @@
 # Changelog
 
-All notable changes to Reading Progress & Table of Contents will be documented in this file.
+All notable changes to Erryn Reading Progress & Table of Contents will be documented in this file.
+
+## 1.0.2 — 2026-08-07
+
+### Fixed
+
+- Plugin URI pointing to a page that did not exist
+
+### Changed
+
+- Renamed the `reading_progress_toc` shortcode to `rptoc_reading_progress_toc` for a consistent, unique prefix
+
+## 1.0.1 — 2026-08-01
+
+### Fixed
+
+- Section links not scrolling horizontally on mobile when the side-rail layout falls back to the horizontal bar
 
 ## 1.0.0 — 2026-07-28
 

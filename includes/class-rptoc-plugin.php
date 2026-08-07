@@ -66,7 +66,7 @@ class RPTOC_Plugin {
 		// content is what tells filter_content to render, exactly like the
 		// block. Position in the content is irrelevant, since the component
 		// pins to the viewport wherever it is called.
-		add_shortcode( 'reading_progress_toc', '__return_empty_string' );
+		add_shortcode( 'rptoc_reading_progress_toc', '__return_empty_string' );
 		add_shortcode( 'rptoc', '__return_empty_string' );
 
 		// Per-post override: a small control in the editor to force the
@@ -111,7 +111,7 @@ class RPTOC_Plugin {
 		foreach ( $types as $type ) {
 			add_meta_box(
 				'rptoc-display',
-				__( 'Reading Progress & Contents', 'reading-progress-table-of-contents' ),
+				__( 'Reading Progress & Contents', 'erryn-reading-progress-table-of-contents' ),
 				array( $this, 'render_meta_box' ),
 				$type,
 				'side',
@@ -125,14 +125,14 @@ class RPTOC_Plugin {
 		wp_nonce_field( 'rptoc_display_meta', 'rptoc_display_nonce' );
 		?>
 		<p style="margin:0 0 8px;">
-			<label for="rptoc-display-select"><?php esc_html_e( 'On this post:', 'reading-progress-table-of-contents' ); ?></label>
+			<label for="rptoc-display-select"><?php esc_html_e( 'On this post:', 'erryn-reading-progress-table-of-contents' ); ?></label>
 		</p>
 		<select id="rptoc-display-select" name="rptoc_display" style="width:100%;">
-			<option value="" <?php selected( $value, '' ); ?>><?php esc_html_e( 'Follow the settings', 'reading-progress-table-of-contents' ); ?></option>
-			<option value="show" <?php selected( $value, 'show' ); ?>><?php esc_html_e( 'Always show', 'reading-progress-table-of-contents' ); ?></option>
-			<option value="hide" <?php selected( $value, 'hide' ); ?>><?php esc_html_e( 'Never show', 'reading-progress-table-of-contents' ); ?></option>
+			<option value="" <?php selected( $value, '' ); ?>><?php esc_html_e( 'Follow the settings', 'erryn-reading-progress-table-of-contents' ); ?></option>
+			<option value="show" <?php selected( $value, 'show' ); ?>><?php esc_html_e( 'Always show', 'erryn-reading-progress-table-of-contents' ); ?></option>
+			<option value="hide" <?php selected( $value, 'hide' ); ?>><?php esc_html_e( 'Never show', 'erryn-reading-progress-table-of-contents' ); ?></option>
 		</select>
-		<p class="description" style="margin-top:8px;"><?php esc_html_e( 'Overrides the global rules for this one post. "Always show" still needs a heading or two to build the list from.', 'reading-progress-table-of-contents' ); ?></p>
+		<p class="description" style="margin-top:8px;"><?php esc_html_e( 'Overrides the global rules for this one post. "Always show" still needs a heading or two to build the list from.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 		<?php
 	}
 
@@ -207,7 +207,7 @@ class RPTOC_Plugin {
 		} else {
 			$has_manual        = has_block( 'rptoc/toc-progress', $post )
 				|| has_shortcode( $post->post_content, 'rptoc' )
-				|| has_shortcode( $post->post_content, 'reading_progress_toc' );
+				|| has_shortcode( $post->post_content, 'rptoc_reading_progress_toc' );
 			$allowed_post_type = in_array( $post->post_type, (array) $settings['post_types'], true );
 
 			$processed     = RPTOC_Render::process_content( $content, RPTOC_Settings::heading_level_ints(), RPTOC_Settings::excluded_class() );

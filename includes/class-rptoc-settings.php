@@ -391,8 +391,8 @@ class RPTOC_Settings {
 
 	public function register_menu() {
 		add_options_page(
-			__( 'Reading Progress & Table of Contents', 'reading-progress-table-of-contents' ),
-			__( 'Reading Progress', 'reading-progress-table-of-contents' ),
+			__( 'Erryn Reading Progress & Table of Contents', 'erryn-reading-progress-table-of-contents' ),
+			__( 'Reading Progress', 'erryn-reading-progress-table-of-contents' ),
 			'manage_options',
 			'rptoc-settings',
 			array( $this, 'render_page' )
@@ -579,7 +579,7 @@ class RPTOC_Settings {
 
 			<div class="rptoc-color__palette">
 				<select name="<?php echo esc_attr( $palette_field ); ?>">
-					<option value="" <?php selected( $palette_slug, '' ); ?>><?php esc_html_e( 'Plugin default', 'reading-progress-table-of-contents' ); ?></option>
+					<option value="" <?php selected( $palette_slug, '' ); ?>><?php esc_html_e( 'Plugin default', 'erryn-reading-progress-table-of-contents' ); ?></option>
 					<?php foreach ( $theme_palette as $slug => $name ) : ?>
 						<option value="<?php echo esc_attr( $slug ); ?>" <?php selected( $palette_slug, $slug ); ?>><?php echo esc_html( $name ); ?></option>
 					<?php endforeach; ?>
@@ -591,7 +591,7 @@ class RPTOC_Settings {
 			</div>
 
 			<div class="rptoc-color__opacity">
-				<label class="rptoc-color__opacity-label" for="<?php echo esc_attr( $opacity_id ); ?>"><?php esc_html_e( 'Opacity', 'reading-progress-table-of-contents' ); ?></label>
+				<label class="rptoc-color__opacity-label" for="<?php echo esc_attr( $opacity_id ); ?>"><?php esc_html_e( 'Opacity', 'erryn-reading-progress-table-of-contents' ); ?></label>
 				<input type="range" class="rptoc-slider__range" min="0" max="100" value="<?php echo esc_attr( $settings[ "color_{$key}_opacity" ] ); ?>" aria-hidden="true" tabindex="-1" data-rptoc-pair="<?php echo esc_attr( $opacity_id ); ?>" />
 				<input type="number" id="<?php echo esc_attr( $opacity_id ); ?>" name="<?php echo esc_attr( $opacity_field ); ?>" value="<?php echo esc_attr( $settings[ "color_{$key}_opacity" ] ); ?>" min="0" max="100" class="small-text" />
 				<span class="rptoc-slider__unit">%</span>
@@ -618,11 +618,11 @@ class RPTOC_Settings {
 
 			<div class="rptoc-masthead">
 				<div class="rptoc-masthead__bar">
-					<h1 class="rptoc-masthead__title"><?php esc_html_e( 'Reading Progress & Table of Contents', 'reading-progress-table-of-contents' ); ?></h1>
+					<h1 class="rptoc-masthead__title"><?php esc_html_e( 'Erryn Reading Progress & Table of Contents', 'erryn-reading-progress-table-of-contents' ); ?></h1>
 					<span class="rptoc-masthead__brand" aria-hidden="true"><?php echo self::brand_icon(); // phpcs:ignore WordPress.Security.EscapeOutput -- static, self-contained SVG literal. ?></span>
 				</div>
 				<div class="rptoc-masthead__sub">
-					<?php esc_html_e( 'A lightweight progress indicator and navigable table of contents for WordPress.', 'reading-progress-table-of-contents' ); ?>
+					<?php esc_html_e( 'A lightweight progress indicator and navigable table of contents for WordPress.', 'erryn-reading-progress-table-of-contents' ); ?>
 				</div>
 			</div>
 
@@ -630,10 +630,10 @@ class RPTOC_Settings {
 				<?php settings_fields( 'rptoc_settings_group' ); ?>
 
 				<div class="rptoc-tabs" role="tablist" data-rptoc-tabs>
-					<button type="button" class="rptoc-tabs__tab is-active" role="tab" aria-selected="true" data-rptoc-tab="general"><?php esc_html_e( 'General', 'reading-progress-table-of-contents' ); ?></button>
-					<button type="button" class="rptoc-tabs__tab" role="tab" aria-selected="false" data-rptoc-tab="placement"><?php esc_html_e( 'Placement', 'reading-progress-table-of-contents' ); ?></button>
-					<button type="button" class="rptoc-tabs__tab" role="tab" aria-selected="false" data-rptoc-tab="style"><?php esc_html_e( 'Appearance', 'reading-progress-table-of-contents' ); ?></button>
-					<button type="button" class="rptoc-tabs__tab" role="tab" aria-selected="false" data-rptoc-tab="colours"><?php esc_html_e( 'Colours', 'reading-progress-table-of-contents' ); ?></button>
+					<button type="button" class="rptoc-tabs__tab is-active" role="tab" aria-selected="true" data-rptoc-tab="general"><?php esc_html_e( 'General', 'erryn-reading-progress-table-of-contents' ); ?></button>
+					<button type="button" class="rptoc-tabs__tab" role="tab" aria-selected="false" data-rptoc-tab="placement"><?php esc_html_e( 'Placement', 'erryn-reading-progress-table-of-contents' ); ?></button>
+					<button type="button" class="rptoc-tabs__tab" role="tab" aria-selected="false" data-rptoc-tab="style"><?php esc_html_e( 'Appearance', 'erryn-reading-progress-table-of-contents' ); ?></button>
+					<button type="button" class="rptoc-tabs__tab" role="tab" aria-selected="false" data-rptoc-tab="colours"><?php esc_html_e( 'Colours', 'erryn-reading-progress-table-of-contents' ); ?></button>
 				</div>
 
 				<div class="rptoc-shell__body">
@@ -641,23 +641,23 @@ class RPTOC_Settings {
 				<section class="rptoc-panel is-active" data-rptoc-panel="general">
 
 					<div class="rptoc-card">
-						<h2><?php esc_html_e( 'When it appears', 'reading-progress-table-of-contents' ); ?></h2>
+						<h2><?php esc_html_e( 'When it appears', 'erryn-reading-progress-table-of-contents' ); ?></h2>
 
 						<div class="rptoc-field">
 							<label class="rptoc-check">
 								<input type="checkbox" name="<?php echo esc_attr( self::OPTION ); ?>[enabled]" value="1" <?php checked( $settings['enabled'], 1 ); ?> />
-								<span><?php esc_html_e( 'Add it automatically when a page has enough headings', 'reading-progress-table-of-contents' ); ?></span>
+								<span><?php esc_html_e( 'Add it automatically when a page has enough headings', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							</label>
-							<p class="description"><?php esc_html_e( 'A page using the TOC Anchor block, or the manual block, always renders regardless of this setting.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'A page using the TOC Anchor block, or the manual block, always renders regardless of this setting.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 
 						<div class="rptoc-field">
-							<?php $this->render_slider( 'min_headings', __( 'Minimum sections', 'reading-progress-table-of-contents' ), $settings['min_headings'], 1, 12, '' ); ?>
-							<p class="description"><?php esc_html_e( 'Below this count, auto-insert leaves the page alone. A three-heading article gets a bar worth having. A two-heading one rarely does.', 'reading-progress-table-of-contents' ); ?></p>
+							<?php $this->render_slider( 'min_headings', __( 'Minimum sections', 'erryn-reading-progress-table-of-contents' ), $settings['min_headings'], 1, 12, '' ); ?>
+							<p class="description"><?php esc_html_e( 'Below this count, auto-insert leaves the page alone. A three-heading article gets a bar worth having. A two-heading one rarely does.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 
 						<div class="rptoc-field">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Post types', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Post types', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-checks">
 								<?php foreach ( $post_types as $pt ) : ?>
 									<label class="rptoc-check">
@@ -669,17 +669,17 @@ class RPTOC_Settings {
 						</div>
 
 						<div class="rptoc-field">
-							<label class="rptoc-field__label" for="rptoc-exclude-ids"><?php esc_html_e( 'Never show on these post IDs', 'reading-progress-table-of-contents' ); ?></label>
+							<label class="rptoc-field__label" for="rptoc-exclude-ids"><?php esc_html_e( 'Never show on these post IDs', 'erryn-reading-progress-table-of-contents' ); ?></label>
 							<input type="text" id="rptoc-exclude-ids" class="regular-text" name="<?php echo esc_attr( self::OPTION ); ?>[exclude_ids]" value="<?php echo esc_attr( $settings['exclude_ids'] ); ?>" placeholder="12, 48, 301" />
-							<p class="description"><?php esc_html_e( 'Comma separated. On a multilingual site with WPML or Polylang, excluding any one translation excludes the whole group, so a single ID covers every language.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Comma separated. On a multilingual site with WPML or Polylang, excluding any one translation excludes the whole group, so a single ID covers every language.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 					</div>
 
 					<div class="rptoc-card">
-						<h2><?php esc_html_e( 'What counts as a section', 'reading-progress-table-of-contents' ); ?></h2>
+						<h2><?php esc_html_e( 'What counts as a section', 'erryn-reading-progress-table-of-contents' ); ?></h2>
 
 						<div class="rptoc-field">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Heading levels', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Heading levels', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-checks rptoc-checks--inline">
 								<?php foreach ( self::HEADING_LEVELS as $lvl ) : ?>
 									<label class="rptoc-check rptoc-check--chip">
@@ -688,49 +688,49 @@ class RPTOC_Settings {
 									</label>
 								<?php endforeach; ?>
 							</div>
-							<p class="description"><?php esc_html_e( 'Each level nests under whichever selected level sits above it. H5 and H6 earn their place on a long reference page; on a normal article they mostly make the strip noisy.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Each level nests under whichever selected level sits above it. H5 and H6 earn their place on a long reference page; on a normal article they mostly make the strip noisy.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 
 						<div class="rptoc-field">
-							<label class="rptoc-field__label" for="rptoc-exclude-class"><?php esc_html_e( 'Skip headings with this class', 'reading-progress-table-of-contents' ); ?></label>
+							<label class="rptoc-field__label" for="rptoc-exclude-class"><?php esc_html_e( 'Skip headings with this class', 'erryn-reading-progress-table-of-contents' ); ?></label>
 							<input type="text" id="rptoc-exclude-class" class="regular-text code" name="<?php echo esc_attr( self::OPTION ); ?>[exclude_class]" value="<?php echo esc_attr( $settings['exclude_class'] ); ?>" placeholder="no-toc" />
 							<p class="description">
-								<?php esc_html_e( 'A single class name, no leading dot. Any heading carrying it is skipped: useful for a themed "Related posts" or "Comments" heading that would otherwise sit at the end of every table of contents on the site.', 'reading-progress-table-of-contents' ); ?>
+								<?php esc_html_e( 'A single class name, no leading dot. Any heading carrying it is skipped: useful for a themed "Related posts" or "Comments" heading that would otherwise sit at the end of every table of contents on the site.', 'erryn-reading-progress-table-of-contents' ); ?>
 							</p>
 							<p class="description">
-								<?php esc_html_e( 'To add a section that is not a heading at all, use the TOC Anchor block. Placing any anchor block on a page switches that page off heading detection entirely.', 'reading-progress-table-of-contents' ); ?>
+								<?php esc_html_e( 'To add a section that is not a heading at all, use the TOC Anchor block. Placing any anchor block on a page switches that page off heading detection entirely.', 'erryn-reading-progress-table-of-contents' ); ?>
 							</p>
 						</div>
 
 						<div class="rptoc-field">
 							<label class="rptoc-check">
 								<input type="checkbox" name="<?php echo esc_attr( self::OPTION ); ?>[schema_enabled]" value="1" <?php checked( $settings['schema_enabled'], 1 ); ?> />
-								<span><?php esc_html_e( 'Add Table of Contents structured data where supported', 'reading-progress-table-of-contents' ); ?></span>
+								<span><?php esc_html_e( 'Add Table of Contents structured data where supported', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							</label>
-							<p class="description"><?php esc_html_e( 'Uses the detected sections to describe the page structure. No visible markup is added beyond the table of contents itself.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Uses the detected sections to describe the page structure. No visible markup is added beyond the table of contents itself.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 
 						<details class="rptoc-advanced">
-							<summary class="rptoc-advanced__summary"><?php esc_html_e( 'Advanced detection', 'reading-progress-table-of-contents' ); ?></summary>
+							<summary class="rptoc-advanced__summary"><?php esc_html_e( 'Advanced detection', 'erryn-reading-progress-table-of-contents' ); ?></summary>
 
 							<div class="rptoc-field">
-								<span class="rptoc-field__label"><?php esc_html_e( 'Content area', 'reading-progress-table-of-contents' ); ?></span>
+								<span class="rptoc-field__label"><?php esc_html_e( 'Content area', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								<div class="rptoc-segmented">
 									<label class="rptoc-check">
 										<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[content_detect]" value="auto" <?php checked( $settings['content_detect'], 'auto' ); ?> data-rptoc-toggle="content-selector" data-rptoc-toggle-when="off" />
-										<span><?php esc_html_e( 'Detect automatically', 'reading-progress-table-of-contents' ); ?></span>
+										<span><?php esc_html_e( 'Detect automatically', 'erryn-reading-progress-table-of-contents' ); ?></span>
 									</label>
 									<label class="rptoc-check">
 										<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[content_detect]" value="selector" <?php checked( $settings['content_detect'], 'selector' ); ?> data-rptoc-toggle="content-selector" data-rptoc-toggle-when="on" />
-										<span><?php esc_html_e( 'CSS selector', 'reading-progress-table-of-contents' ); ?></span>
+										<span><?php esc_html_e( 'CSS selector', 'erryn-reading-progress-table-of-contents' ); ?></span>
 									</label>
 								</div>
 							</div>
 
 							<div class="rptoc-field rptoc-field--dependent" data-rptoc-dependent="content-selector">
-								<label class="rptoc-field__label" for="rptoc-content-selector"><?php esc_html_e( 'Content CSS selector', 'reading-progress-table-of-contents' ); ?></label>
+								<label class="rptoc-field__label" for="rptoc-content-selector"><?php esc_html_e( 'Content CSS selector', 'erryn-reading-progress-table-of-contents' ); ?></label>
 								<input type="text" id="rptoc-content-selector" class="regular-text code" name="<?php echo esc_attr( self::OPTION ); ?>[content_selector]" value="<?php echo esc_attr( $settings['content_selector'] ); ?>" placeholder="article .entry-content" />
-								<p class="description"><?php esc_html_e( 'Enter the selector for the element containing the article content. Use this only when automatic detection does not work correctly with the active theme. If it matches nothing on the page, detection falls back to automatic.', 'reading-progress-table-of-contents' ); ?></p>
+								<p class="description"><?php esc_html_e( 'Enter the selector for the element containing the article content. Use this only when automatic detection does not work correctly with the active theme. If it matches nothing on the page, detection falls back to automatic.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 							</div>
 						</details>
 					</div>
@@ -738,103 +738,103 @@ class RPTOC_Settings {
 
 				<section class="rptoc-panel" data-rptoc-panel="placement">
 					<div class="rptoc-card">
-						<h2><?php esc_html_e( 'Layout', 'reading-progress-table-of-contents' ); ?></h2>
+						<h2><?php esc_html_e( 'Layout', 'erryn-reading-progress-table-of-contents' ); ?></h2>
 
 						<div class="rptoc-field">
-							<span class="rptoc-field__label"><?php esc_html_e( 'How it shows', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'How it shows', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-segmented">
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[layout]" value="bar" <?php checked( $settings['layout'], 'bar' ); ?> data-rptoc-toggle="layout-rail" data-rptoc-toggle-when="off" />
-									<span><?php esc_html_e( 'Horizontal bar', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Horizontal bar', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[layout]" value="rail" <?php checked( $settings['layout'], 'rail' ); ?> data-rptoc-toggle="layout-rail" data-rptoc-toggle-when="on" />
-									<span><?php esc_html_e( 'Side rail', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Side rail', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 							</div>
-							<p class="description"><?php esc_html_e( 'Horizontal bar: a full-width progress bar with the section links displayed alongside it. Side rail: a compact vertical marker fixed to the edge of the viewport that expands to reveal the section list.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Horizontal bar: a full-width progress bar with the section links displayed alongside it. Side rail: a compact vertical marker fixed to the edge of the viewport that expands to reveal the section list.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 
 						<div class="rptoc-field rptoc-field--dependent" data-rptoc-dependent="layout-rail">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Rail side', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Rail side', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-segmented">
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[rail_side]" value="right" <?php checked( $settings['rail_side'], 'right' ); ?> />
-									<span><?php esc_html_e( 'Right', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Right', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[rail_side]" value="left" <?php checked( $settings['rail_side'], 'left' ); ?> />
-									<span><?php esc_html_e( 'Left', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Left', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 							</div>
-							<p class="description"><?php esc_html_e( 'On narrow screens the rail cannot work on touch, so it falls back to the bar automatically. The dock, alignment and progress-bar settings below govern how that fallback looks.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'On narrow screens the rail cannot work on touch, so it falls back to the bar automatically. The dock, alignment and progress-bar settings below govern how that fallback looks.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 					</div>
 
 					<div class="rptoc-card">
-						<h2><?php esc_html_e( 'Where it sits', 'reading-progress-table-of-contents' ); ?></h2>
+						<h2><?php esc_html_e( 'Where it sits', 'erryn-reading-progress-table-of-contents' ); ?></h2>
 
 						<div class="rptoc-field">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Dock position', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Dock position', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-segmented">
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[dock]" value="bottom" <?php checked( $settings['dock'], 'bottom' ); ?> data-rptoc-toggle="dock-header" data-rptoc-toggle-when="off" />
-									<span><?php esc_html_e( 'Bottom of the viewport', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Bottom of the viewport', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[dock]" value="header" <?php checked( $settings['dock'], 'header' ); ?> data-rptoc-toggle="dock-header" data-rptoc-toggle-when="on" />
-									<span><?php esc_html_e( 'Directly below the header', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Directly below the header', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 							</div>
 						</div>
 
 						<div class="rptoc-field rptoc-field--dependent" data-rptoc-dependent="dock-header">
-							<label class="rptoc-field__label" for="rptoc-header-selector"><?php esc_html_e( 'Header selector', 'reading-progress-table-of-contents' ); ?></label>
+							<label class="rptoc-field__label" for="rptoc-header-selector"><?php esc_html_e( 'Header selector', 'erryn-reading-progress-table-of-contents' ); ?></label>
 							<input type="text" id="rptoc-header-selector" class="regular-text code" name="<?php echo esc_attr( self::OPTION ); ?>[header_selector]" value="<?php echo esc_attr( $settings['header_selector'] ); ?>" placeholder="#masthead" />
-							<p class="description"><?php esc_html_e( 'Leave blank to detect it automatically: the plugin looks for a header landmark the browser reports as fixed or sticky, rather than guessing at class names. Fill this in only if that picks the wrong element.', 'reading-progress-table-of-contents' ); ?></p>
-							<p class="description"><?php esc_html_e( 'This mode needs a header that stays on screen. If yours scrolls away with the page, a gap opens above the bar, and the browser console will tell you so.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Leave blank to detect it automatically: the plugin looks for a header landmark the browser reports as fixed or sticky, rather than guessing at class names. Fill this in only if that picks the wrong element.', 'erryn-reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'This mode needs a header that stays on screen. If yours scrolls away with the page, a gap opens above the bar, and the browser console will tell you so.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 
 						<div class="rptoc-field rptoc-field--dependent" data-rptoc-dependent="dock-header">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Header offset', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Header offset', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-segmented">
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[header_offset_mode]" value="auto" <?php checked( $settings['header_offset_mode'], 'auto' ); ?> data-rptoc-toggle="header-offset" data-rptoc-toggle-when="off" />
-									<span><?php esc_html_e( 'Auto', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Auto', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[header_offset_mode]" value="custom" <?php checked( $settings['header_offset_mode'], 'custom' ); ?> data-rptoc-toggle="header-offset" data-rptoc-toggle-when="on" />
-									<span><?php esc_html_e( 'Custom', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Custom', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 							</div>
 							<div class="rptoc-field rptoc-field--dependent" data-rptoc-dependent="header-offset">
-								<?php $this->render_slider( 'header_offset', __( 'Custom offset', 'reading-progress-table-of-contents' ), $settings['header_offset'], 0, 400 ); ?>
-								<p class="description"><?php esc_html_e( 'Set the distance from the top of the viewport for when the site header cannot be detected automatically. Auto measures the detected header and still accounts for the admin bar.', 'reading-progress-table-of-contents' ); ?></p>
+								<?php $this->render_slider( 'header_offset', __( 'Custom offset', 'erryn-reading-progress-table-of-contents' ), $settings['header_offset'], 0, 400 ); ?>
+								<p class="description"><?php esc_html_e( 'Set the distance from the top of the viewport for when the site header cannot be detected automatically. Auto measures the detected header and still accounts for the admin bar.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 							</div>
 						</div>
 
 						<div class="rptoc-field">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Progress bar', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Progress bar', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-segmented">
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[progress_position]" value="above" <?php checked( $settings['progress_position'], 'above' ); ?> />
-									<span><?php esc_html_e( 'Above the links', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Above the links', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[progress_position]" value="below" <?php checked( $settings['progress_position'], 'below' ); ?> />
-									<span><?php esc_html_e( 'Below the links', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Below the links', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 							</div>
 						</div>
 
 						<div class="rptoc-field">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Alignment', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Alignment', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-segmented">
 								<?php
 								$aligns = array(
-									'left'   => __( 'Start', 'reading-progress-table-of-contents' ),
-									'center' => __( 'Centre', 'reading-progress-table-of-contents' ),
-									'right'  => __( 'End', 'reading-progress-table-of-contents' ),
+									'left'   => __( 'Start', 'erryn-reading-progress-table-of-contents' ),
+									'center' => __( 'Centre', 'erryn-reading-progress-table-of-contents' ),
+									'right'  => __( 'End', 'erryn-reading-progress-table-of-contents' ),
 								);
 								foreach ( $aligns as $val => $label ) :
 									?>
@@ -844,75 +844,75 @@ class RPTOC_Settings {
 									</label>
 								<?php endforeach; ?>
 							</div>
-							<p class="description"><?php esc_html_e( 'Only affects lists short enough to fit. Anything wider scrolls from the start. Start and end follow text direction, so they flip on right-to-left sites.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Only affects lists short enough to fit. Anything wider scrolls from the start. Start and end follow text direction, so they flip on right-to-left sites.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 					</div>
 				</section>
 
 				<section class="rptoc-panel" data-rptoc-panel="style">
 					<div class="rptoc-card">
-						<h2><?php esc_html_e( 'Links and text', 'reading-progress-table-of-contents' ); ?></h2>
+						<h2><?php esc_html_e( 'Links and text', 'erryn-reading-progress-table-of-contents' ); ?></h2>
 
 						<div class="rptoc-field">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Link style', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Link style', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-segmented">
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[style]" value="pills" <?php checked( $settings['style'], 'pills' ); ?> data-rptoc-toggle="pill-padding" data-rptoc-toggle-when="on" />
-									<span><?php esc_html_e( 'Pills', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Pills', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[style]" value="text" <?php checked( $settings['style'], 'text' ); ?> data-rptoc-toggle="pill-padding" data-rptoc-toggle-when="off" />
-									<span><?php esc_html_e( 'Plain text', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Plain text', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 							</div>
 						</div>
 
 						<div class="rptoc-field">
-							<span class="rptoc-field__label"><?php esc_html_e( 'Font size', 'reading-progress-table-of-contents' ); ?></span>
+							<span class="rptoc-field__label"><?php esc_html_e( 'Font size', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							<div class="rptoc-segmented">
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[font_size_mode]" value="inherit" <?php checked( $settings['font_size_mode'], 'inherit' ); ?> data-rptoc-toggle="font-custom" data-rptoc-toggle-when="off" />
-									<span><?php esc_html_e( 'Inherit from the theme', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Inherit from the theme', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 								<label class="rptoc-check">
 									<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[font_size_mode]" value="custom" <?php checked( $settings['font_size_mode'], 'custom' ); ?> data-rptoc-toggle="font-custom" data-rptoc-toggle-when="on" />
-									<span><?php esc_html_e( 'Set it myself', 'reading-progress-table-of-contents' ); ?></span>
+									<span><?php esc_html_e( 'Set it myself', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								</label>
 							</div>
 						</div>
 
 						<div class="rptoc-field rptoc-field--dependent" data-rptoc-dependent="font-custom">
 							<?php
-							$this->render_slider( 'font_size_desktop', __( 'Desktop', 'reading-progress-table-of-contents' ), $settings['font_size_desktop'], 10, 28 );
-							$this->render_slider( 'font_size_mobile', __( 'Mobile', 'reading-progress-table-of-contents' ), $settings['font_size_mobile'], 10, 28 );
+							$this->render_slider( 'font_size_desktop', __( 'Desktop', 'erryn-reading-progress-table-of-contents' ), $settings['font_size_desktop'], 10, 28 );
+							$this->render_slider( 'font_size_mobile', __( 'Mobile', 'erryn-reading-progress-table-of-contents' ), $settings['font_size_mobile'], 10, 28 );
 							?>
-							<p class="description"><?php esc_html_e( 'Nested levels scale proportionally from whichever size is active.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Nested levels scale proportionally from whichever size is active.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 
 						<div class="rptoc-field">
 							<label class="rptoc-check">
 								<input type="checkbox" name="<?php echo esc_attr( self::OPTION ); ?>[shadow]" value="1" <?php checked( $settings['shadow'], 1 ); ?> />
-								<span><?php esc_html_e( 'Drop shadow', 'reading-progress-table-of-contents' ); ?></span>
+								<span><?php esc_html_e( 'Drop shadow', 'erryn-reading-progress-table-of-contents' ); ?></span>
 							</label>
-							<p class="description"><?php esc_html_e( 'Off by default. A drop shadow reads well on a plain light page, but tends to muddy a dark or busy background, so it is left off unless you want it.', 'reading-progress-table-of-contents' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Off by default. A drop shadow reads well on a plain light page, but tends to muddy a dark or busy background, so it is left off unless you want it.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 						</div>
 					</div>
 
 					<div class="rptoc-card rptoc-card--dependent" data-rptoc-dependent="pill-padding">
-						<h2><?php esc_html_e( 'Pill padding', 'reading-progress-table-of-contents' ); ?></h2>
+						<h2><?php esc_html_e( 'Pill padding', 'erryn-reading-progress-table-of-contents' ); ?></h2>
 						<div class="rptoc-columns">
 							<div class="rptoc-columns__col">
-								<h3><?php esc_html_e( 'Desktop', 'reading-progress-table-of-contents' ); ?></h3>
+								<h3><?php esc_html_e( 'Desktop', 'erryn-reading-progress-table-of-contents' ); ?></h3>
 								<?php
-								$this->render_slider( 'pad_y', __( 'Vertical', 'reading-progress-table-of-contents' ), $settings['pad_y'], 2, 24 );
-								$this->render_slider( 'pad_x', __( 'Horizontal', 'reading-progress-table-of-contents' ), $settings['pad_x'], 4, 36 );
+								$this->render_slider( 'pad_y', __( 'Vertical', 'erryn-reading-progress-table-of-contents' ), $settings['pad_y'], 2, 24 );
+								$this->render_slider( 'pad_x', __( 'Horizontal', 'erryn-reading-progress-table-of-contents' ), $settings['pad_x'], 4, 36 );
 								?>
 							</div>
 							<div class="rptoc-columns__col">
-								<h3><?php esc_html_e( 'Mobile', 'reading-progress-table-of-contents' ); ?></h3>
+								<h3><?php esc_html_e( 'Mobile', 'erryn-reading-progress-table-of-contents' ); ?></h3>
 								<?php
-								$this->render_slider( 'pad_y_mobile', __( 'Vertical', 'reading-progress-table-of-contents' ), $settings['pad_y_mobile'], 2, 24 );
-								$this->render_slider( 'pad_x_mobile', __( 'Horizontal', 'reading-progress-table-of-contents' ), $settings['pad_x_mobile'], 4, 36 );
+								$this->render_slider( 'pad_y_mobile', __( 'Vertical', 'erryn-reading-progress-table-of-contents' ), $settings['pad_y_mobile'], 2, 24 );
+								$this->render_slider( 'pad_x_mobile', __( 'Horizontal', 'erryn-reading-progress-table-of-contents' ), $settings['pad_x_mobile'], 4, 36 );
 								?>
 							</div>
 						</div>
@@ -921,40 +921,40 @@ class RPTOC_Settings {
 
 				<section class="rptoc-panel" data-rptoc-panel="colours">
 					<div class="rptoc-card">
-						<h2><?php esc_html_e( 'Colours', 'reading-progress-table-of-contents' ); ?></h2>
+						<h2><?php esc_html_e( 'Colours', 'erryn-reading-progress-table-of-contents' ); ?></h2>
 
 						<div class="rptoc-colors" data-rptoc-colors data-mode="<?php echo esc_attr( $settings['color_source'] ); ?>">
 							<div class="rptoc-field">
-								<span class="rptoc-field__label"><?php esc_html_e( 'Colour source', 'reading-progress-table-of-contents' ); ?></span>
+								<span class="rptoc-field__label"><?php esc_html_e( 'Colour source', 'erryn-reading-progress-table-of-contents' ); ?></span>
 								<div class="rptoc-segmented">
 									<label class="rptoc-check">
 										<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[color_source]" value="follow" <?php checked( $settings['color_source'], 'follow' ); ?> data-rptoc-color-mode />
-										<span><?php esc_html_e( 'Follow rendered theme colours', 'reading-progress-table-of-contents' ); ?></span>
+										<span><?php esc_html_e( 'Follow rendered theme colours', 'erryn-reading-progress-table-of-contents' ); ?></span>
 									</label>
 									<label class="rptoc-check">
 										<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[color_source]" value="palette" <?php checked( $settings['color_source'], 'palette' ); ?> data-rptoc-color-mode />
-										<span><?php esc_html_e( 'Choose palette colours', 'reading-progress-table-of-contents' ); ?></span>
+										<span><?php esc_html_e( 'Choose palette colours', 'erryn-reading-progress-table-of-contents' ); ?></span>
 									</label>
 									<label class="rptoc-check">
 										<input type="radio" name="<?php echo esc_attr( self::OPTION ); ?>[color_source]" value="custom" <?php checked( $settings['color_source'], 'custom' ); ?> data-rptoc-color-mode />
-										<span><?php esc_html_e( 'Use custom colours', 'reading-progress-table-of-contents' ); ?></span>
+										<span><?php esc_html_e( 'Use custom colours', 'erryn-reading-progress-table-of-contents' ); ?></span>
 									</label>
 								</div>
-								<p class="description rptoc-colors__note" data-rptoc-mode-note="follow"><?php esc_html_e( 'Uses the colours rendered by the active theme and follows supported light or dark mode changes automatically.', 'reading-progress-table-of-contents' ); ?></p>
-								<p class="description rptoc-colors__note" data-rptoc-mode-note="palette"><?php esc_html_e( 'Pin each role to a colour from the active theme\'s palette. Palette colours are referenced as CSS variables, so they keep following a theme\'s light or dark switch.', 'reading-progress-table-of-contents' ); ?></p>
-								<p class="description rptoc-colors__note" data-rptoc-mode-note="custom"><?php esc_html_e( 'Set an exact colour for each role. These are fixed values and do not follow theme mode changes.', 'reading-progress-table-of-contents' ); ?></p>
+								<p class="description rptoc-colors__note" data-rptoc-mode-note="follow"><?php esc_html_e( 'Uses the colours rendered by the active theme and follows supported light or dark mode changes automatically.', 'erryn-reading-progress-table-of-contents' ); ?></p>
+								<p class="description rptoc-colors__note" data-rptoc-mode-note="palette"><?php esc_html_e( 'Pin each role to a colour from the active theme\'s palette. Palette colours are referenced as CSS variables, so they keep following a theme\'s light or dark switch.', 'erryn-reading-progress-table-of-contents' ); ?></p>
+								<p class="description rptoc-colors__note" data-rptoc-mode-note="custom"><?php esc_html_e( 'Set an exact colour for each role. These are fixed values and do not follow theme mode changes.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 							</div>
 
 							<?php if ( empty( self::theme_palette() ) ) : ?>
-								<p class="description rptoc-colors__note" data-rptoc-mode-note="palette"><?php esc_html_e( 'The active theme ships no theme.json palette, so there are no palette colours to choose. Follow or custom still work.', 'reading-progress-table-of-contents' ); ?></p>
+								<p class="description rptoc-colors__note" data-rptoc-mode-note="palette"><?php esc_html_e( 'The active theme ships no theme.json palette, so there are no palette colours to choose. Follow or custom still work.', 'erryn-reading-progress-table-of-contents' ); ?></p>
 							<?php endif; ?>
 
 							<div class="rptoc-color-roles" data-rptoc-color-roles>
 								<?php
-								$this->render_color_row( $settings, 'bg', __( 'Background', 'reading-progress-table-of-contents' ), __( 'The component background', 'reading-progress-table-of-contents' ) );
-								$this->render_color_row( $settings, 'fg', __( 'Text', 'reading-progress-table-of-contents' ), __( 'Inactive links and supporting text', 'reading-progress-table-of-contents' ) );
-								$this->render_color_row( $settings, 'accent', __( 'Accent', 'reading-progress-table-of-contents' ), __( 'The progress fill and active link', 'reading-progress-table-of-contents' ) );
-								$this->render_color_row( $settings, 'accent_contrast', __( 'Accent contrast', 'reading-progress-table-of-contents' ), __( 'Text displayed over the active accent colour', 'reading-progress-table-of-contents' ) );
+								$this->render_color_row( $settings, 'bg', __( 'Background', 'erryn-reading-progress-table-of-contents' ), __( 'The component background', 'erryn-reading-progress-table-of-contents' ) );
+								$this->render_color_row( $settings, 'fg', __( 'Text', 'erryn-reading-progress-table-of-contents' ), __( 'Inactive links and supporting text', 'erryn-reading-progress-table-of-contents' ) );
+								$this->render_color_row( $settings, 'accent', __( 'Accent', 'erryn-reading-progress-table-of-contents' ), __( 'The progress fill and active link', 'erryn-reading-progress-table-of-contents' ) );
+								$this->render_color_row( $settings, 'accent_contrast', __( 'Accent contrast', 'erryn-reading-progress-table-of-contents' ), __( 'Text displayed over the active accent colour', 'erryn-reading-progress-table-of-contents' ) );
 								?>
 							</div>
 						</div>
@@ -973,7 +973,7 @@ class RPTOC_Settings {
 				<?php
 				printf(
 					/* translators: %s: erryn.io link. */
-					esc_html__( 'Built by %s', 'reading-progress-table-of-contents' ),
+					esc_html__( 'Built by %s', 'erryn-reading-progress-table-of-contents' ),
 					'<a href="https://erryn.io" target="_blank" rel="noopener noreferrer">erryn.io</a>'
 				);
 				?>

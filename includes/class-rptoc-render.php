@@ -282,7 +282,7 @@ class RPTOC_Render {
 			// share an aria-controls target.
 			$popover_id = function_exists( 'wp_unique_id' ) ? wp_unique_id( 'rptoc-popover-' ) : 'rptoc-popover-' . wp_rand( 1000, 99999 );
 
-			$toggle_label = esc_attr__( 'Table of contents', 'reading-progress-table-of-contents' );
+			$toggle_label = esc_attr__( 'Table of contents', 'erryn-reading-progress-table-of-contents' );
 
 			$rail_html  = '<button type="button" class="rptoc__rail-toggle" aria-label="' . $toggle_label . '" aria-expanded="false" aria-controls="' . esc_attr( $popover_id ) . '" data-rptoc-rail-toggle>';
 			$rail_html .= self::render_ticks( $flat_headings );
@@ -308,7 +308,7 @@ class RPTOC_Render {
 
 		ob_start();
 		?>
-		<nav class="<?php echo esc_attr( $nav_class ); ?>" data-rptoc aria-label="<?php esc_attr_e( 'Table of contents', 'reading-progress-table-of-contents' ); ?>">
+		<nav class="<?php echo esc_attr( $nav_class ); ?>" data-rptoc aria-label="<?php esc_attr_e( 'Table of contents', 'erryn-reading-progress-table-of-contents' ); ?>">
 			<?php echo $inner; // phpcs:ignore WordPress.Security.EscapeOutput -- assembled from esc_*() calls above. ?>
 		</nav>
 		<?php

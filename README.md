@@ -1,6 +1,8 @@
-# Reading Progress & Table of Contents
+# Erryn Reading Progress & Table of Contents
 
 A performance-conscious WordPress plugin that adds an automatic table of contents, reading progress and current-section highlighting to long posts and pages.
+
+> This repository is named `reading-progress-table-of-contents`. The plugin's WordPress.org listing and display name are **Erryn Reading Progress & Table of Contents**, at the slug `erryn-reading-progress-table-of-contents`, so that it is distinctive within the WordPress.org directory. The two names refer to the same plugin.
 
 [View the product page and live demonstration](https://erryn.io/products/reading-progress-table-of-contents/)
 
@@ -23,7 +25,7 @@ A performance-conscious WordPress plugin that adds an automatic table of content
 
 ### WordPress.org
 
-Once the directory release is available, search for **Reading Progress & Table of Contents** under **Plugins → Add New**.
+Search for **Erryn Reading Progress & Table of Contents** under **Plugins → Add New**.
 
 ### Manual installation
 
@@ -46,7 +48,7 @@ By default, the plugin detects headings and appears automatically when a support
 You can also:
 
 - add the **TOC & Progress** block to enable it explicitly;
-- use `[reading_progress_toc]` or `[rptoc]` outside the block editor;
+- use `[rptoc_reading_progress_toc]` or `[rptoc]` outside the block editor;
 - add **TOC Anchor** blocks to define sections manually;
 - force the component on or off for an individual post;
 - provide a custom content-area selector for unusual themes.
@@ -55,7 +57,7 @@ Full documentation, screenshots and a live demonstration are available on the [p
 
 ## Development and support
 
-Use the WordPress.org support forum for general usage questions once the plugin is listed there.
+Use the WordPress.org support forum for general usage questions.
 
 Use [GitHub Issues](https://github.com/ErrynIO/reading-progress-table-of-contents/issues) for reproducible bugs and development-related reports. Please read [SECURITY.md](SECURITY.md) before reporting a suspected vulnerability.
 
@@ -69,4 +71,4 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## Licence
 
-Reading Progress & Table of Contents is licensed under the GNU General Public License v2.0 or later. See [LICENSE](LICENSE).
+Erryn Reading Progress & Table of Contents is licensed under the GNU General Public License v2.0 or later. See [LICENSE](LICENSE).
